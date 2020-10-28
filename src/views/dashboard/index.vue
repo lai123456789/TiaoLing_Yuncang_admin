@@ -2,34 +2,6 @@
   <div class="dashboard-container">
     <el-container>
       <el-container>
-        <el-row type="flex" class="row-bg" justify="space-around">
-          <el-col :span="6">
-            <div class="grid-content bg-purple">
-              <div>上午好，某某某</div>
-              <div>欢迎登入商家客户端</div>
-              <div class="textTime">上次登录时间：2020年09月23日 10:28:00</div>
-            </div>
-          </el-col>
-          <el-col :span="6">
-            <div class="grid-content bg-purple-light">
-              <div>钱包余额</div>
-              <div class="textDiv">
-                <div>Y3456.09</div>
-                <div>我要充值</div>
-                <div>充值历史</div>
-              </div>
-            </div>
-          </el-col>
-          <el-col :span="6">
-            <div class="grid-content bg-purple-light">
-              <div>我的账单</div>
-              <div class="textDiv">
-                <div>Y3456.09</div>
-                <div>历史账单</div>
-              </div>
-            </div>
-          </el-col>
-        </el-row>
         <div class="two row-bg">
           <div><i class="el-icon-time" />待办事项提醒</div>
           <el-row type="flex"  justify="space-around">

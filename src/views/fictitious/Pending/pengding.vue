@@ -12,7 +12,7 @@
               <el-input placeholder="请输入运单号或订单号" v-model="formInline.rid" style="width:200px;" suffix-icon="el-icon-search"></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button type="warning">搜索</el-button>
+              <el-button type="primary">搜索</el-button>
             </el-form-item>
           </el-form>
     </el-card>
@@ -100,7 +100,7 @@ export default {
 
   .box-card {
     margin: 30px;
-    
+
   }
 }
 .el-table .cell,

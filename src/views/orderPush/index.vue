@@ -4,10 +4,10 @@
       <el-row >
         <el-col :span="3">
           <div class="grid-content  topButton">
-            <el-button type="warning">添加shopee授权</el-button>
+            <el-button type="primary">添加shopee授权</el-button>
           </div>
           <div class="grid-content  topButton">
-            <el-button type="warning">添加Lazada授权</el-button>
+            <el-button type="primary">添加Lazada授权</el-button>
           </div>
           <div class="grid-content  topButton">
             <el-button type="danger" class="jiebang"> 解绑店铺 </el-button>
@@ -42,7 +42,7 @@
             ></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="warning">订单号搜索</el-button>
+            <el-button type="primary">订单号搜索</el-button>
           </el-form-item>
           <el-form-item :inline="true" :model="formInline" class="demo-form-inline">
             <el-input
@@ -53,7 +53,7 @@
             ></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="warning">运单号搜索</el-button>
+            <el-button type="primary">运单号搜索</el-button>
           </el-form-item>
           <el-form-item :inline="true" :model="formInline" class="demo-form-inline">
             <el-input
@@ -64,7 +64,7 @@
             ></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="warning">店铺名搜索</el-button>
+            <el-button type="primary">店铺名搜索</el-button>
           </el-form-item>
         </el-form>
         <el-tabs v-model="activeName">

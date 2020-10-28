@@ -24,7 +24,7 @@
               <el-input v-model="form.rcode" placeholder="短信验证码" prefix-icon="el-icon-lock"></el-input>
             </el-col>
             <el-col :span="6" :offset="1">
-              <el-button class="box-btn" type="warning">获取验证码</el-button>
+              <el-button class="box-btn" type="primary">获取验证码</el-button>
             </el-col>
           </el-row>
         </el-form-item>
@@ -48,12 +48,12 @@
 
         <!-- 登录按钮 -->
         <el-form-item>
-          <el-button class="box-btn" type="warning" @click="doLogin">登录</el-button>
+          <el-button class="box-btn" type="primary" @click="doLogin">登录</el-button>
         </el-form-item>
 
         <!-- 登录按钮 -->
         <el-form-item>
-          <el-button type="warning" @click="changeRegister">注册</el-button>
+          <el-button type="primary" @click="changeRegister">注册</el-button>
           <el-button type="danger" @click="changeLogin">点击切换密码登录</el-button>
         </el-form-item>
 
@@ -102,7 +102,7 @@
 
         <!-- 登录按钮 -->
         <el-form-item>
-          <el-button class="box-btn" type="warning" @click="doRegister">注册</el-button>
+          <el-button class="box-btn" type="primary" @click="doRegister">注册</el-button>
         </el-form-item>
 
         <!-- 登录按钮 -->

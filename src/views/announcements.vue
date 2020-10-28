@@ -31,27 +31,40 @@
     </el-card>
     <!-- 下面卡片 -->
     <el-card class="box-card">
+      <el-button type="primary"  @click="dialogVisible = true"  style="margin-bottom: 20px">添加公告</el-button>
       <el-table border style="width: 100%;" :data="tableForm">
-        <el-table-column prop="create_time" label="虚拟仓订单创建时间"></el-table-column>
-        <el-table-column prop="pending_time" label="处理时间"></el-table-column>
-        <el-table-column prop="shop_name" label="平台和店铺"></el-table-column>
-        <el-table-column prop="order_text" label="订单详情"></el-table-column>
-        <el-table-column prop="order_Num" label="订单号"></el-table-column>
-        <el-table-column prop="Waybill_Num" label="运单号"></el-table-column>
-        <el-table-column prop="email_Num" label="国内物流单号"></el-table-column>
-        <el-table-column prop="sheet" label="面单"></el-table-column>
-        <el-table-column prop="money" label="收费"></el-table-column>
-        <el-table-column prop="state" label="状态"></el-table-column>
-        <el-table-column prop="intimidate" label="是否代打单"></el-table-column>
+        <el-table-column prop="create_time" label="公告标题"></el-table-column>
+        <el-table-column prop="pending_time" label="公告内容"></el-table-column>
+        <el-table-column prop="shop_name" label="添加时间"></el-table-column>
+        <el-table-column prop="order_text" label="是否启用"></el-table-column>
+        <el-table-column prop="order_Num" label="是否推送"></el-table-column>
+        <el-table-column prop="Waybill_Num" label="操作">
+          <template slot-scope="scope">
+            <!-- 点击编辑进入编辑页面进行编辑表格数据 -->
+            <el-button size="small" @click="handleEdit(scope.row)">编辑</el-button>
+            <el-button size="small" type="danger" @click="handleDelete(scope.row)">删除</el-button>
+          </template>
+        </el-table-column>
       </el-table>
     </el-card>
+    <el-dialog
+      title="添加公告"
+      :visible.sync="dialogVisible"
+      width="30%">
+      <span>这是一段添加公告的信息</span>
+      <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisible = false">取 消</el-button>
+    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+  </span>
+    </el-dialog>
   </div>
 </template>
 <script>
 export default {
  data() {
     return {
-      // 上面行内表单绑定的对象
+      dialogVisible:false,
+      // 下面行内表单绑定的对象
       formInline: {
         create_date:"",
         end_date:"",
@@ -115,6 +128,20 @@ export default {
       ]
     }
   },
+  methods:{
+    handleEdit(e){},
+    handleDelete(e){
+      this.$confirm('确认删除？')
+        .then(_ => {
+          // done();
+        })
+        .catch(_ => {});
+    },
+    add(){
+
+    }
+  },
+
 };
 </script>
 

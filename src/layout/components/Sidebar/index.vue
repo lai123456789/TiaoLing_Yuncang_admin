@@ -6,7 +6,6 @@
       <el-menu
         :default-active="activeMenu"
         :collapse="isCollapse"
-        background-color="white"
         text-color="black"
         :unique-opened="false"
         :collapse-transition="false"

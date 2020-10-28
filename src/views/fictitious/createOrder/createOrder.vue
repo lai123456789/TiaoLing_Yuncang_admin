@@ -4,7 +4,7 @@
       <el-card class="box-card">
         <el-form :inline="true" class="demo-form-inline">
           <el-form-item>
-            <el-button type="warning" @click="btn_created">创建订单</el-button>
+            <el-button type="primary" @click="btn_created">创建订单</el-button>
           </el-form-item>
           <el-form-item :inline="true" :model="formInline" class="demo-form-inline">
             <el-input
@@ -15,7 +15,7 @@
             ></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="warning">搜索</el-button>
+            <el-button type="primary">搜索</el-button>
           </el-form-item>
         </el-form>
       </el-card>
@@ -52,7 +52,7 @@
         </el-form-item>
 
         <el-form-item style="text-align: center;">
-        <el-button type="warning">立即提交</el-button>
+        <el-button type="primary">立即提交</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -108,7 +108,7 @@ export default {
         emailID:"",
         remark:""
       },
-      // 规则对象 
+      // 规则对象
       rules:{
         emailID:[{required: true, message: "物流单不能为空", trigger: "blur"}]
       }

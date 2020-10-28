@@ -100,7 +100,7 @@
                         <el-input v-model="form.rcode" placeholder="短信验证码" prefix-icon="el-icon-lock"></el-input>
                       </el-col>
                       <el-col :span="3" :offset="1">
-                        <el-button class="box-btn" type="warning">获取验证码</el-button>
+                        <el-button class="box-btn" type="primary">获取验证码</el-button>
                       </el-col>
                     </el-row>
                   </el-form-item>
@@ -145,7 +145,7 @@
                         <el-input v-model="form.rcode" placeholder="请输入短信验证码" prefix-icon="el-icon-lock"></el-input>
                       </el-col>
                       <el-col :span="3" :offset="1">
-                        <el-button class="box-btn" type="warning">获取验证码</el-button>
+                        <el-button class="box-btn" type="primary">获取验证码</el-button>
                       </el-col>
                     </el-row>
                   </el-form-item>

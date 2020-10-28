@@ -6,7 +6,7 @@
         <b>邀请返现说明:</b>
         <p>通过链接或者二维码邀请注册，你可以获得被邀请人每次充值金额的4%作为奖励，你的上级将获得被邀请人每次充值金额的2%作为奖励，上不封顶</p>
         <p>假如A邀请B，B邀请C，C充值1000元，B获得40元，A获得20元。</p>
-        <el-button type="warning" @click="btnOpen">开通邀请功能</el-button>
+        <el-button type="primary" @click="btnOpen">开通邀请功能</el-button>
       </div>
     </el-card>
   </div>
@@ -102,7 +102,7 @@
           <!-- 短信验证码  -->
           <el-form-item label="短信验证码" prop="rcode">
             <el-input v-model="form.rcode" placeholder="短信验证码" style="width:15%;margin-right:20px"></el-input>
-            <el-button type="warning">获取短信验证码</el-button>
+            <el-button type="primary">获取短信验证码</el-button>
           </el-form-item>
 
           <!-- 协议  -->
@@ -115,7 +115,7 @@
 
           <!-- 提交按钮  -->
           <el-form-item>
-            <el-button type="warning" @click="submit">申请提交</el-button>
+            <el-button type="primary" @click="submit">申请提交</el-button>
           </el-form-item>
         </el-form>
       </div>

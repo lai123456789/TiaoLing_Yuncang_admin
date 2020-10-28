@@ -105,6 +105,8 @@ export const constantRoutes = [
       }
     ]
   },
+  // 404 page must be placed at the end !!!
+  { path: '*', redirect: '/404', hidden: true },
   {
     path: '/invite',
     component: Layout,
@@ -129,8 +131,81 @@ export const constantRoutes = [
       }
     ]
   },
-  // 404 page must be placed at the end !!!
-  { path: '*', redirect: '/404', hidden: true }
+  {
+    path: '/announcements',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'announcements',
+        component: () => import('../views/announcements.vue'),
+        meta: { title: '公告管理', icon: 'el-icon-document' }
+      }
+    ]
+  },
+  {
+    path: '/attachment',
+    component: Layout,
+    redirect: '/attachment/table',
+    name: 'attachment',
+    meta: { title: '附件管理', icon: 'el-icon-document-checked' },
+    children: [
+      {
+        path: 'useJiaocheng',
+        name: 'useJiaocheng',
+        component: () => import('../views/attachment/useJiaocheng.vue'),
+        meta: { title: '使用教程', icon: 'el-icon-s-flag' }
+      },
+      {
+        path: 'changjianProblem',
+        name: 'changjianProblem',
+        component: () => import('../views/attachment/changjianProblem.vue'),
+        meta: { title: '常见问题', icon: 'el-icon-question' }
+      },
+      {
+        path: 'fujianDowload',
+        name: 'fujianDowload',
+        component: () => import('../views/attachment/fujianDowload.vue'),
+        meta: { title: '附件下载', icon: 'el-icon-download' }
+      },
+      {
+        path: 'feiyongPrice',
+        name: 'feiyongPrice',
+        component: () => import('../views/attachment/feiyongPrice.vue'),
+        meta: { title: '物流费用报价', icon: 'el-icon-price-tag' }
+      },
+
+    ]
+  },
+  {
+    path: '/usermanage',
+    component: Layout,
+    redirect: '/usermanage/table',
+    name: 'usermanage',
+    meta: { title: '用户管理', icon: 'el-icon-user' },
+    children: [
+      {
+        path: 'userInfo',
+        name: 'userInfo',
+        component: () => import('../views/usermanage/userInfo.vue'),
+        meta: { title: '用户信息', icon: 'el-icon-view' }
+      },
+      {
+        path: 'payTicket',
+        name: 'payTicket',
+        component: () => import('../views/usermanage/payTicket.vue'),
+        meta: { title: '支付流水', icon: 'el-icon-tickets' }
+      },
+      {
+        path: 'shouquanShop',
+        name: 'shouquanShop',
+        component: () => import('../views/usermanage/shouquanShop.vue'),
+        meta: { title: '授权店铺', icon: 'el-icon-office-building' }
+      },
+
+    ]
+  },
+
 ]
 
 const createRouter = () => new Router({
