@@ -1,29 +1,58 @@
 <template>
   <div class="order">
         <el-card class="box-card">
-          <el-button type="primary" @click="dialogVisible = true">添加问答</el-button>
+          <el-form :inline="true" class="demo-form-inline" :model="formInline">
+            <el-form-item label="用户编号">
+              <el-input placeholder="请输入用户编号" v-model="formInline.emailID" style="width:200px;" suffix-icon="el-icon-search"></el-input>
+            </el-form-item>
+            <el-form-item label="用户名">
+                <el-input placeholder="请输入用户名" v-model="formInline.emailID" style="width:200px;" suffix-icon="el-icon-search"></el-input>
+            </el-form-item>
+            <el-form-item label="是否开通邀请返现">
+              <el-select placeholder="请选择" v-model="formInline.type">
+                <el-option label="是" value="1"></el-option>
+                <el-option label="否" value="2"></el-option>
+              </el-select>
+            </el-form-item>
+            <el-form-item label="手机号码">
+              <el-input placeholder="请输入手机号码" v-model="formInline.emailID" style="width:200px;" suffix-icon="el-icon-search"></el-input>
+            </el-form-item>
+            <el-form-item label="微信号">
+              <el-input placeholder="请输入微信号" v-model="formInline.emailID" style="width:200px;" suffix-icon="el-icon-search"></el-input>
+            </el-form-item>
+            <el-form-item label="注册时间段">
+              <el-date-picker
+                v-model="formInline.create_date"
+                type="daterange"
+                range-separator="至"
+                start-placeholder="开始日期"
+                end-placeholder="结束日期">
+              </el-date-picker>
+            </el-form-item>
+
+            <el-form-item>
+              <el-button type="primary">搜索</el-button>
+            </el-form-item>
+          </el-form>
+
         </el-card>
     <!-- 下面卡片 -->
     <el-card class="box-card">
       <el-table border style="width: 100%;" :data="tableForm">
-        <el-table-column prop="create_time" label="编号"></el-table-column>
-        <el-table-column prop="pending_time" label="标题"></el-table-column>
-        <el-table-column prop="shop_name" label="问题类型"></el-table-column>
-        <el-table-column prop="order_text" label="回答"></el-table-column>
-        <el-table-column prop="order_Num" label="发布时间"></el-table-column>
-        <el-table-column prop="order_Num" label="更新时间"></el-table-column>
-        <el-table-column prop="order_Num" label="是否启用">
-          <template slot-scope="scope">
-            <el-switch
-              v-model="isFlat">
-            </el-switch>
-          </template>
-        </el-table-column>
-        <el-table-column prop="Waybill_Num" label="操作">
+        <el-table-column prop="create_time" label="用户编号"></el-table-column>
+        <el-table-column prop="pending_time" label="用户名"></el-table-column>
+        <el-table-column prop="shop_name" label="头像"></el-table-column>
+        <el-table-column prop="order_text" label="手机号码"></el-table-column>
+        <el-table-column prop="order_Num" label="微信号"></el-table-column>
+        <el-table-column prop="order_Num" label="当前余额"></el-table-column>
+        <el-table-column prop="order_Num" label="是否开通邀请返现"></el-table-column>
+        <el-table-column prop="order_Num" label="分佣余额"></el-table-column>
+        <el-table-column prop="order_Num" label="注册时间"></el-table-column>
+        <el-table-column prop="order_Num" label="最近一次登录时间"></el-table-column>
+        <el-table-column prop="Waybill_Num" label="查看下家分佣">
           <template slot-scope="scope">
             <!-- 点击编辑进入编辑页面进行编辑表格数据 -->
-            <el-button size="small" @click="handleEdit(scope.row)">编辑</el-button>
-            <el-button size="small" type="danger" @click="handleDelete(scope.row)">删除</el-button>
+            <el-button size="small" @click="look(scope.row)">查看</el-button>
           </template>
         </el-table-column>
 
@@ -31,7 +60,7 @@
     </el-card>
 
     <el-dialog
-      title="添加问答"
+      title="下级分佣信息"
       :visible.sync="dialogVisible"
       width="30%">
       <span>这是一段的信息</span>

@@ -1,147 +1,154 @@
 <template>
   <div class="order">
-<!--    <el-card class="box-card">-->
-<!--    </el-card>-->
     <el-card class="box-card">
-      <el-button type="primary"  @click="dialogVisible = true">添加附件</el-button>
+      <el-form :inline="true" class="demo-form-inline" :model="formInline">
+        <el-form-item label="用户编号">
+          <el-input placeholder="请输入用户编号" v-model="formInline.emailID" style="width:200px;" suffix-icon="el-icon-search"></el-input>
+        </el-form-item>
+        <el-form-item label="用户名">
+          <el-input placeholder="请输入用户名" v-model="formInline.emailID" style="width:200px;" suffix-icon="el-icon-search"></el-input>
+        </el-form-item>
+        <el-form-item label="国家站点">
+          <el-select placeholder="请选择" v-model="formInline.type">
+            <el-option label="美国" value="1"></el-option>
+            <el-option label="泰国" value="2"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="手机号码">
+          <el-input placeholder="请输入手机号码" v-model="formInline.emailID" style="width:200px;" suffix-icon="el-icon-search"></el-input>
+        </el-form-item>
+        <el-form-item label="店铺名">
+          <el-input placeholder="请输入店铺名" v-model="formInline.emailID" style="width:200px;" suffix-icon="el-icon-search"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary">搜索</el-button>
+        </el-form-item>
+      </el-form>
+
     </el-card>
     <!-- 下面卡片 -->
     <el-card class="box-card">
       <el-table border style="width: 100%;" :data="tableForm">
-        <el-table-column prop="create_time" label="编号"></el-table-column>
-        <el-table-column prop="pending_time" label="标题"></el-table-column>
-        <el-table-column prop="shop_name" label="发布时间"></el-table-column>
-        <el-table-column prop="order_text" label="更新时间"></el-table-column>
-        <el-table-column prop="order_Num" label="文件">
-          <template slot-scope="scope">
-            <!-- 点击编辑进入编辑页面进行编辑表格数据 -->
-            <el-button size="small" @click="look(scope.row)">查看文件</el-button>
-          </template>
-        </el-table-column>
-        <el-table-column prop="order_Num" label="是否启用">
-          <template slot-scope="scope">
-            <el-switch
-              v-model="isFlat">
-            </el-switch>
-          </template>
-        </el-table-column>
-        <el-table-column prop="Waybill_Num" label="操作">
-          <template slot-scope="scope">
-            <!-- 点击编辑进入编辑页面进行编辑表格数据 -->
-            <el-button size="small" @click="handleEdit(scope.row)">编辑</el-button>
-            <el-button size="small" type="danger" @click="handleDelete(scope.row)">删除</el-button>
-          </template>
-        </el-table-column>
+        <el-table-column prop="create_time" label="店铺名"></el-table-column>
+        <el-table-column prop="create_time" label="用户编号"></el-table-column>
+        <el-table-column prop="pending_time" label="用户名"></el-table-column>
+        <el-table-column prop="order_text" label="手机号码"></el-table-column>
+        <el-table-column prop="order_Num" label="站点"></el-table-column>
       </el-table>
     </el-card>
+
     <el-dialog
-      title="添加公告"
+      title="下级分佣信息"
       :visible.sync="dialogVisible"
       width="30%">
-      <span>这是一段添加公告的信息</span>
+      <span>这是一段的信息</span>
       <span slot="footer" class="dialog-footer">
     <el-button @click="dialogVisible = false">取 消</el-button>
     <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
   </span>
     </el-dialog>
+
   </div>
 </template>
 <script>
-export default {
- data() {
-    return {
-      isFlat:true,
-      dialogVisible:false,
-      // 下面行内表单绑定的对象
-      formInline: {
-        create_date:"",
-        end_date:"",
-        type:"",
-        emailID:"",
-        rid:""
-      },
-      tableForm:[
-        {
-          create_time:'2020/08/16',
-          pending_time:'2020/08/16',
-          shop_name:'云仓一号',
-          order_text:'XXXX',
-          order_Num:'001',
-          Waybill_Num:'20200816001',
-          email_Num:'20200816000001',
-          sheet:'面单',
-          money:'$24',
-          state:'已完成',
-          intimidate:'是'
+  export default {
+    data() {
+      return {
+        isFlat:false,
+        dialogVisible:false,
+        // 上面行内表单绑定的对象
+        formInline: {
+          create_date:"",
+          end_date:"",
+          type:"",
+          emailID:"",
+          rid:""
         },
-        {
-          create_time:'2020/08/16',
-          pending_time:'2020/08/16',
-          shop_name:'云仓一号',
-          order_text:'XXXX',
-          order_Num:'001',
-          Waybill_Num:'20200816001',
-          email_Num:'20200816000001',
-          sheet:'面单',
-          money:'$24',
-          state:'已完成',
-          intimidate:'是'
-        },
-        {
-          create_time:'2020/08/16',
-          pending_time:'2020/08/16',
-          shop_name:'云仓一号',
-          order_text:'XXXX',
-          order_Num:'001',
-          Waybill_Num:'20200816001',
-          email_Num:'20200816000001',
-          sheet:'面单',
-          money:'$24',
-          state:'已完成',
-          intimidate:'是'
-        },
-        {
-          create_time:'2020/08/16',
-          pending_time:'2020/08/16',
-          shop_name:'云仓一号',
-          order_text:'XXXX',
-          order_Num:'001',
-          Waybill_Num:'20200816001',
-          email_Num:'20200816000001',
-          sheet:'面单',
-          money:'$24',
-          state:'已完成',
-          intimidate:'是'
-        },
-      ]
-    }
-  },
-  methods:{
-    handleEdit(e){},
-    handleDelete(e){
-      this.$confirm('确认删除？')
-        .then(_ => {
-          // done();
-        })
-        .catch(_ => {});
+        tableForm:[
+          {
+            create_time:'2020/08/16',
+            pending_time:'2020/08/16',
+            shop_name:'云仓一号',
+            order_text:'XXXX',
+            order_Num:'001',
+            Waybill_Num:'20200816001',
+            email_Num:'20200816000001',
+            sheet:'面单',
+            money:'$24',
+            state:'已完成',
+            intimidate:'是'
+          },
+          {
+            create_time:'2020/08/16',
+            pending_time:'2020/08/16',
+            shop_name:'云仓一号',
+            order_text:'XXXX',
+            order_Num:'001',
+            Waybill_Num:'20200816001',
+            email_Num:'20200816000001',
+            sheet:'面单',
+            money:'$24',
+            state:'已完成',
+            intimidate:'是'
+          },
+          {
+            create_time:'2020/08/16',
+            pending_time:'2020/08/16',
+            shop_name:'云仓一号',
+            order_text:'XXXX',
+            order_Num:'001',
+            Waybill_Num:'20200816001',
+            email_Num:'20200816000001',
+            sheet:'面单',
+            money:'$24',
+            state:'已完成',
+            intimidate:'是'
+          },
+          {
+            create_time:'2020/08/16',
+            pending_time:'2020/08/16',
+            shop_name:'云仓一号',
+            order_text:'XXXX',
+            order_Num:'001',
+            Waybill_Num:'20200816001',
+            email_Num:'20200816000001',
+            sheet:'面单',
+            money:'$24',
+            state:'已完成',
+            intimidate:'是'
+          },
+        ]
+      }
     },
-    look(){}
-  },
+    methods:{
+      handleEdit(e){},
+      handleDelete(e){
+        this.$confirm('确认删除？')
+          .then(_ => {
+            // done();
+          })
+          .catch(_ => {});
+      },
+      look(e){
+        this.dialogVisible = true
+      }
+    },
 
-};
+  };
 </script>
 
 <style lang="scss">
-.order {
-  margin: 10px 10px 0;
+  .order {
+    margin: 10px 10px 0;
 
-  .box-card {
-    margin: 10px 30px;
+    .box-card {
+      margin: 10px 30px;
 
+    }
+    .el-table .cell,
+    .el-table th>.cell{
+      text-align: center;
+    }
   }
-}
-.el-table .cell,
-.el-table th>.cell{
-    text-align: center;
-}
+
 </style>
