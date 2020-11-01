@@ -1,0 +1,48 @@
+/* 独立存在的初始化代码 */
+*{
+    margin: 0;
+    padding: 0;
+    /*css3盒子模型*/
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;/*把下划线清除*/
+}
+li{
+    list-style: none;  /*清除li自带的.*/
+}
+button{
+    border:none;
+}
+input{
+    border: none;
+    outline: none; /*清除点击完有一条外轮廓线*/
+}
+img{
+    border: none; /*低级浏览器可能有边框需清除*/
+    vertical-align:middle; /*图片底部会自带空白间隙*/ 
+}
+i{
+    font-style: normal; 
+}
+body{
+    font-size: 12px;
+    line-height: 1;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+/*清除浮动的影响*/
+.clearfix::after{
+    content: "";
+    display: block; /*块级*/
+    clear: both;   /*清除浮动的影响*/
+    height: 0;
+    visibility: hidden;
+}
+.clearfix{
+    *zoom:1;
+}

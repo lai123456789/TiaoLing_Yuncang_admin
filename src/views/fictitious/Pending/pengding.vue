@@ -1,34 +1,61 @@
 <template>
   <div class="pengding">
-    <el-card class="box-card">
-          <el-form :inline="true" class="demo-form-inline"  :model="formInline">
-            <el-form-item>
-              <el-input placeholder="请输入国内物流单号搜索" v-model="formInline.emailID" style="width:200px;" suffix-icon="el-icon-search"></el-input>
+    <el-card class="box-card clearfix">
+          <el-form  :inline="true" class="demo-form-inline clearfix"  :model="formInline">
+            <el-form-item label="店铺">
+                <el-select placeholder="请选择" v-model="formInline.type">
+                    <el-option label="全部" value="1"></el-option>
+                    <el-option label="Shopee" value="2"></el-option>
+                    <el-option label="Lazada" value="3"></el-option>
+                </el-select>
             </el-form-item>
-            <el-form-item>
-              <el-button type="primary">查询</el-button>
+            <el-form-item label="用户名">
+              <el-input placeholder="" v-model="formInline.emailID"></el-input>
             </el-form-item>
-            <el-form-item>
-              <el-input placeholder="请输入运单号或订单号" v-model="formInline.rid" style="width:200px;" suffix-icon="el-icon-search"></el-input>
+            <el-form-item label="国内物流单号">
+              <el-input placeholder="" v-model="formInline.rid"></el-input>
             </el-form-item>
-            <el-form-item>
-              <el-button type="primary">搜索</el-button>
+            <el-form-item label="店铺名称">
+              <el-input placeholder="" v-model="formInline.rid"></el-input>
             </el-form-item>
+            <el-form-item label="平台运单号">
+              <el-input placeholder="" v-model="formInline.rid"></el-input>
+            </el-form-item>
+            <el-form-item label="平台订单号">
+              <el-input placeholder="" v-model="formInline.rid"></el-input>
+            </el-form-item>
+            <div class="fr">
+              <el-form-item>
+                <el-button type="primary">搜索</el-button>
+              </el-form-item>
+              <el-form-item>
+                <el-button>重置</el-button>
+              </el-form-item>
+            </div>
           </el-form>
+          <div class="fr"><el-button type="primary">扫描收货</el-button></div>
     </el-card>
     <!-- 下面卡片 -->
     <el-card class="box-card">
       <el-table border style="width: 100%;" :data="tableForm">
-        <el-table-column  prop="create_time" label="虚拟仓订单创建时间"></el-table-column>
-        <el-table-column  prop="shop_name" label="平台和店铺"></el-table-column>
-        <el-table-column  prop="order_text" label="订单详情"></el-table-column>
-        <el-table-column  prop="email_Num" label="国内物流单号"></el-table-column>
-        <el-table-column  prop="order_Num" label="订单号"></el-table-column>
-        <el-table-column  prop="Waybill_Num" label="运单号"></el-table-column>
+        <el-table-column  prop="create_time" label="用户名"></el-table-column>
+        <el-table-column  prop="shop_name" label="系统订单ID"></el-table-column>
+        <el-table-column  prop="order_text" label="平台"></el-table-column>
+        <el-table-column  prop="email_Num" label="店铺名"></el-table-column>
+        <el-table-column  prop="order_Num" label="订单商品信息"></el-table-column>
+        <el-table-column  prop="Waybill_Num" label="订单号"></el-table-column>
+        <el-table-column  prop="sheet" label="订单创建时间"></el-table-column>
+        <el-table-column  prop="ifsheet" label="运单号"></el-table-column>
+        <el-table-column  prop="remarks" label="国内物流单号"></el-table-column>
         <el-table-column  prop="sheet" label="面单"></el-table-column>
-        <el-table-column  prop="ifsheet" label="是否代打单"></el-table-column>
-        <el-table-column  prop="remarks" label="备注"></el-table-column>
-        <el-table-column label="操作"></el-table-column>
+        <el-table-column  prop="ifsheet" label="备注"></el-table-column>
+        <el-table-column  prop="remarks" label="详情"></el-table-column>
+        <el-table-column label="操作">
+          <template slot-scope="scope">
+            <!-- 点击编辑进入编辑页面进行编辑表格数据 -->
+            <el-button size="small">确认出货</el-button>
+          </template>
+        </el-table-column>
       </el-table>
     </el-card>
   </div>
@@ -42,53 +69,8 @@ export default {
         emailID:"",
         rid:""
       },
-      tableForm:[
-        {
-          create_time:'2020/08/16',
-          shop_name:'云仓一号',
-          order_text:'XXXX',
-          order_Num:'001',
-          Waybill_Num:'20200816001',
-          email_Num:'20200816000001',
-          sheet:'面单',
-          ifsheet:'是',
-          remarks:'已完成',
-        },
-        {
-          create_time:'2020/08/16',
-          shop_name:'云仓一号',
-          order_text:'XXXX',
-          order_Num:'001',
-          Waybill_Num:'20200816001',
-          email_Num:'20200816000001',
-          sheet:'面单',
-          ifsheet:'是',
-          remarks:'已完成',
-        },
-        {
-          create_time:'2020/08/16',
-          shop_name:'云仓一号',
-          order_text:'XXXX',
-          order_Num:'001',
-          Waybill_Num:'20200816001',
-          email_Num:'20200816000001',
-          sheet:'面单',
-          ifsheet:'是',
-          remarks:'已完成',
-        },
-        {
-          create_time:'2020/08/16',
-          shop_name:'云仓一号',
-          order_text:'XXXX',
-          order_Num:'001',
-          Waybill_Num:'20200816001',
-          email_Num:'20200816000001',
-          sheet:'面单',
-          ifsheet:'是',
-          remarks:'已完成',
-        },
-
-      ]
+      //下面表格
+      tableForm:[]
     }
   },
 };
@@ -97,10 +79,9 @@ export default {
 <style lang="scss">
 .pengding {
   margin: 10px 10px 0;
-
   .box-card {
     margin: 30px;
-
+    padding: 8px;
   }
 }
 .el-table .cell,
