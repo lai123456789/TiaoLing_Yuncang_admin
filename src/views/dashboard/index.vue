@@ -7,22 +7,22 @@
           <el-row type="flex"  justify="space-around">
             <el-col :span="6">
               <div class="grid-content bg-purple">
-                <div>海外仓待拣货订单：8</div>
+                <div style="display: flex;align-items: center">海外仓待拣货订单：<h3>808</h3></div>
               </div>
             </el-col>
             <el-col :span="6">
               <div class="grid-content bg-purple-light">
-                <div>中国仓待接收订单：8</div>
+                <div style="display: flex;align-items: center">中国仓待接收订单：<h3>808</h3></div>
               </div>
             </el-col>
             <el-col :span="6">
               <div class="grid-content bg-purple-light">
-                <div>虚拟仓待处理订单：8</div>
+                <div style="display: flex;align-items: center">虚拟仓待处理订单：<h3>808</h3></div>
               </div>
             </el-col>
             <el-col :span="6">
               <div class="grid-content bg-purple-light">
-                <div>退件仓待处理订单：8</div>
+                <div style="display: flex;align-items: center">退件仓待处理订单：<h3>808</h3></div>
               </div>
             </el-col>
           </el-row>
@@ -117,40 +117,36 @@
               </div>
             </el-col>
           </el-row>
+          <h3>订单销售榜</h3>
+          <el-card style="margin-right: 20px">
+            <el-table
+              :data="tableData"
+              style="width: 100%">
+              <el-table-column
+                prop="headPic"
+                label="用户名"
+                width="180">
+              </el-table-column>
+              <el-table-column
+                prop="sku"
+                label="用户编码"
+                width="180">
+              </el-table-column>
+              <el-table-column
+                prop="num"
+                label="订单数">
+              </el-table-column>
+              <el-table-column
+                prop="price"
+                label="订单总额">
+              </el-table-column>
+            </el-table>
+          </el-card>
         </div>
         <el-footer>
 
         </el-footer>
       </el-container>
-      <el-aside width="400px">
-        <div class="bg-right-1">
-          <div class="bg-index">
-            <div class="bg-title">
-              <i class="el-icon-time" />
-              <span>最新公告</span>
-            </div>
-            <div>最新公告的标题</div>
-            <div>最新公告的标题</div>
-            <div>最新公告的标题</div>
-            <div>最新公告的标题</div>
-            <div>最新公告的标题</div>
-          </div>
-
-        </div>
-        <div class="bg-right-2">
-          <div class="bg-index">
-            <div class="bg-title">
-              <i class="el-icon-time" />
-              <span>使用教程&常见问题</span>
-            </div>
-            <div>虚拟仓教程</div>
-            <div>海外仓教程</div>
-            <div>常见问题</div>
-          </div>
-
-        </div>
-
-      </el-aside>
 
     </el-container>
 
@@ -210,28 +206,67 @@ export default {
                 tooltip: {},
                 xAxis: {
                     type: 'category',
-                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                  data: ['11/04', '11/05', '11/06', '11/07', '11/08', '11/09', '11/10'],
+                  splitLine:{
+                    show:true //分割线
+                  },
+                  axisLine:{
+                    show:true, //线段加深
+                    lineStyle:{
+                      color:'#1DCCC3'
+                    }
+                  }
                 },
-                yAxis: {
-                    type: 'value'
-                },
+                yAxis: [{
+                  axisLabel:{
+                    show:true //是否显示刻度
+                  },
+                  axisLine:{
+                    show:true //线段加深
+                  },
+                  axisTick:{
+                    show:true //是否显示刻度小标线
+                  },
+                  splitLine:{
+                    show:true //分割线
+                  }
+                }],
                 series: [{
                     data: [820, 932, 901, 934, 1290, 1330, 1320],
                     type: 'line',
-                    smooth: true
+                    smooth: true,
+                  color:'orange'
                 }]
             });
             myChart.setOption({
-                title: { text: '平台订单数对比' },
-                tooltip: {},
-                xAxis: {
-                    data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+              title: { text: '平台订单数对比' },
+              color: ["#FF6F52", "#1DCCC3"],
+              legend: {
+                left:'150'
+              },
+              xAxis:  {
+                splitLine:{
+                  show:true //分割线
                 },
-                yAxis: {},
-                series: [{
-                    name: '销量',
-                    type: 'bar',
-                    data: [5, 20, 36, 10, 10, 20]
+                type: 'category',
+                axisTick: {show: false},
+                data: ['11/04', '11/05', '11/06', '11/07', '11/08', '11/09', '11/10'],
+              },
+              yAxis: {
+                splitLine:{
+                  show:true //分割线
+                }
+              },
+              series: [ {
+                name: 'Lazada',
+                type: 'bar',
+                barGap: 0,
+                data: [120, 200, 150, 80, 70, 110, 130]
+              },
+                {
+                  name: 'shoppee',
+                  type: 'bar',
+                  data: [120, 200, 150, 80, 70, 110, 130]
                 }]
             });
 
@@ -240,28 +275,60 @@ export default {
                 tooltip: {},
                 xAxis: {
                     type: 'category',
-                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                  data: ['11/04', '11/05', '11/06', '11/07', '11/08', '11/09', '11/10'],
+                  color:'#333',
+                  splitLine:{
+                    show:true //分割线
+                  },
+                  axisLine:{
+                    show:true, //线段加深
+                    lineStyle:{
+                      color:'#1DCCC3'
+                    }
+                  }
                 },
                 yAxis: {
-                    type: 'value'
+                    type: 'value',
+                  splitLine:{
+                    show:true //分割线
+                  }
                 },
                 series: [{
                     data: [820, 932, 901, 934, 1290, 1330, 1320],
                     type: 'line',
-                    smooth: true
+                    smooth: true,
+                  color:'orange'
                 }]
             });
             myChartBottomRight.setOption({
-                title: { text: '平台销售额对比' },
-                tooltip: {},
-                xAxis: {
-                    data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+              title: { text: '平台销售额对比' },
+              color: ["#FF6F52", "#1DCCC3"],
+              legend: {
+                left:'150'
+              },
+              xAxis:  {
+                splitLine:{
+                  show:true //分割线
                 },
-                yAxis: {},
-                series: [{
-                    name: '销量',
-                    type: 'bar',
-                    data: [5, 20, 36, 10, 10, 20]
+                type: 'category',
+                axisTick: {show: false},
+                data: ['11/04', '11/05', '11/06', '11/07', '11/08', '11/09', '11/10'],
+              },
+              yAxis: {
+                splitLine:{
+                  show:true //分割线
+                }
+              },
+              series: [ {
+                name: 'Lazada',
+                type: 'bar',
+                barGap: 0,
+                data: [120, 200, 150, 80, 70, 110, 130]
+              },
+                {
+                  name: 'shoppee',
+                  type: 'bar',
+                  data: [120, 200, 150, 80, 70, 110, 130]
                 }]
             });
 

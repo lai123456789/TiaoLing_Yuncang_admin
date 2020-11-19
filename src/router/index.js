@@ -55,18 +55,6 @@ export const constantRoutes = [
     }]
   },
   {
-    path: '/orderPush',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'OrderPush',
-        component: () => import('@/views/orderPush/index'),
-        meta: { title: '订单推送', icon: 'link' }
-      }
-    ]
-  },
-  {
     path: '/fictitious',
     component: Layout,
     redirect: '/fictitious/table',
