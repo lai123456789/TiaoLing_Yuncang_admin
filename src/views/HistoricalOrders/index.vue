@@ -43,10 +43,8 @@
         <el-table-column  prop="order_text" label="平台"></el-table-column>
         <el-table-column  prop="email_Num" label="店铺名"></el-table-column>
         <el-table-column  prop="order_Num" label="订单商品信息"></el-table-column>
-        <el-table-column  prop="Waybill_Num" label="订单号"></el-table-column>
-        <el-table-column  prop="Waybill_Num" label="虚拟仓订单创建时间"></el-table-column>
+        <el-table-column  prop="Waybill_Num" label="订单推送时间"></el-table-column>
         <el-table-column  prop="Waybill_Num" label="处理完成时间"></el-table-column>
-        <el-table-column  prop="remarks" label="国内物流单号"></el-table-column>
         <el-table-column  prop="Waybill_Num" label="是否代打单"></el-table-column>
         <el-table-column  prop="sheet" label="面单"></el-table-column>
         <el-table-column  prop="ifsheet" label="备注"></el-table-column>

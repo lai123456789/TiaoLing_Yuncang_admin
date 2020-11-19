@@ -62,34 +62,85 @@ export const constantRoutes = [
     meta: { title: '虚拟仓', icon: 'el-icon-s-help' },
     children: [
       {
-        path: 'createOrder',
-        name: 'createOrder',
-        component: () => import('../views/fictitious/createOrder/createOrder.vue'),
-        meta: { title: '待创建订单', icon: 'table' }
-      },
-      {
         path: 'Pending',
         name: 'Pending',
         component: () => import('../views/fictitious/Pending/pengding.vue'),
-        meta: { title: '待处理订单', icon: 'table' }
+        meta: { title: '待处理订单', icon: 'el-icon-document' }
       },
       {
         path: 'complete',
         name: 'complete',
         component: () => import('../views/fictitious/complete/complete.vue'),
-        meta: { title: '已完成订单', icon: 'table' }
+        meta: { title: '已完成订单', icon: 'el-icon-tickets' }
       },
     ]
   },
   {
     path: '/returning',
     component: Layout,
+    redirect: '/returning/table',
+    name: 'returning',
+    meta: { title: '退件仓', icon: 'el-icon-edit-outline' },
     children: [
       {
-        path: 'index',
-        name: 'returning',
-        component: () => import('../views/return/return.vue'),
-        meta: { title: '退件仓', icon: 'form' }
+        path: 'ReturnStock',
+        name: 'ReturnStock',
+        component: () => import('../views/return/ReturnStock.vue'),
+        meta: { title: '退件库存管理', icon: 'el-icon-shopping-bag-1' }
+      },
+      {
+        path: 'ShelfHistory',
+        name: 'ShelfHistory',
+        component: () => import('../views/return/ShelfHistory.vue'),
+        meta: { title: '上架历史', icon: 'el-icon-shopping-bag-2' }
+      },
+      {
+        path: 'Tobeshipped',
+        name: 'Tobeshipped',
+        component: () => import('../views/return/Tobeshipped.vue'),
+        meta: { title: '待二次出货', icon: 'el-icon-document' }
+      },
+      {
+        path: 'Shipped',
+        name: 'Shipped',
+        component: () => import('../views/return/Shipped.vue'),
+        meta: { title: '已二次出货', icon: 'el-icon-tickets' }
+      },
+      {
+        path: 'Tobedestroyed',
+        name: 'Tobedestroyed',
+        component: () => import('../views/return/Tobedestroyed.vue'),
+        meta: { title: '待销毁', icon: 'el-icon-delete' }
+      },
+      {
+        path: 'destroyed',
+        name: 'destroyed',
+        component: () => import('../views/return/destroyed.vue'),
+        meta: { title: '已销毁', icon: 'el-icon-delete-solid' }
+      },
+    ]
+  },
+  {
+    path: '/HistoricalOrders',
+    component: Layout,
+    children: [
+      {
+        path: 'HistoricalOrders',
+        name: 'HistoricalOrders',
+        component: () => import('../views/HistoricalOrders/index.vue'),
+        meta: { title: '历史订单', icon: 'form' }
+      }
+    ]
+  },
+  {
+    path: '/ResetRecord',
+    component: Layout,
+    children: [
+      {
+        path: 'ResetRecord',
+        name: 'ResetRecord',
+        component: () => import('../views/ResetRecord/index.vue'),
+        meta: { title: '充值记录', icon: 'el-icon-notebook-2' }
       }
     ]
   },
@@ -98,13 +149,40 @@ export const constantRoutes = [
   {
     path: '/invite',
     component: Layout,
+    redirect: '/invite/table',
+    name: 'invite',
+    meta: { title: '邀请返现', icon: 'el-icon-office-building' },
     children: [
       {
-        path: 'index',
-        name: 'invite',
-        component: () => import('../views/invite/invite.vue'),
-        meta: { title: '邀请返现', icon: 'form' }
-      }
+        path: 'ReturnStock',
+        name: 'ReturnStock',
+        component: () => import('../views/invite/index.vue'),
+        meta: { title: '开通返现功能', icon: 'el-icon-document' }
+      },
+      {
+        path: 'Tobereviewed',
+        name: 'Tobereviewed',
+        component: () => import('../views/invite/Tobereviewed.vue'),
+        meta: { title: '待审核返现', icon: 'el-icon-tickets' }
+      },
+      {
+        path: 'returned',
+        name: 'returned',
+        component: () => import('../views/invite/returned.vue'),
+        meta: { title: '已返现订单', icon: 'el-icon-document-remove' }
+      },
+      {
+        path: 'RechargeCommission',
+        name: 'RechargeCommission',
+        component: () => import('../views/invite/RechargeCommission.vue'),
+        meta: { title: '充值分佣', icon: 'el-icon-collection' }
+      },
+      {
+        path: 'proportion',
+        name: 'proportion',
+        component: () => import('../views/invite/proportion.vue'),
+        meta: { title: '分佣比例', icon: 'el-icon-document-copy' }
+      },
     ]
   },
   {
